@@ -1,0 +1,7 @@
+// Script assets have changed for v2.3.0 see
+// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function AD_get_slope(x1,y1,x2,y2){
+
+	m = (y2-y1)/(x2-x1);
+	return m;
+}
