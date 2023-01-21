@@ -1,0 +1,7 @@
+// Script assets have changed for v2.3.0 see
+// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function AD_get_b(x1,y1,m){
+	b = y1- (m*x1);
+	return b;
+
+}
