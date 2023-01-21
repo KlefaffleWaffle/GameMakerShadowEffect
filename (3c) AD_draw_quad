@@ -1,0 +1,14 @@
+// Script assets have changed for v2.3.0 see
+// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function AD_Draw_Quad(surface,x1,x2,x3,x4,y1,y2,y3,y4,color){	
+
+		draw_set_color(color);
+		draw_set_alpha(.9)
+
+	//NOTE:POINTS 1 AND 4 SHOULD NOT BE ADJACENT
+	draw_triangle(x1,y1,x2,y2,x3,y3,false);
+	draw_triangle(x4,y4,x2,y2,x3,y3,false);
+	
+	
+	
+}
