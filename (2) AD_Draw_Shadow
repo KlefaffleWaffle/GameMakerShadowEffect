@@ -1,0 +1,57 @@
+// Script assets have changed for v2.3.0 see
+// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function AD_draw_Shadow(surface,objectSource){
+	lightSource = instance_nearest(x,y,objectSource);
+	
+	//if the sun is to the right of block
+	if(objectSource.x > (x+(sprite_width))){
+		corner1x = x;
+		corner1y = y;
+		corner2x = x+sprite_width;
+		corner2y = y+sprite_height;
+		
+	//if the sun is to the left of the block
+	}else if(objectSource.x < (x)){
+		corner1x = x;
+		corner1y = y+sprite_height;
+		corner2x = x+sprite_width;
+		corner2y = y;
+		
+	//if the sun is inbetween the left and right of the block.
+	}else{
+		corner1x = x;
+		corner1y = y;
+		corner2x = x+sprite_width;
+		corner2y = y;
+	}
+	
+	//The following bracket gets the x values based on the "y = mx+b" or "x = (y-b)/m formula;
+	{
+	
+	//retrieve m values
+	leftSlope = AD_get_slope(corner1x,corner1y,lightSource.x,lightSource.y);
+	rightSlope = AD_get_slope(corner2x,corner2y,lightSource.x,lightSource.y);
+
+	//retrieves b values
+	bL = AD_get_b(corner1x,corner1y,leftSlope);
+	bR = AD_get_b(corner2x,corner2y,rightSlope);
+	
+	
+	//determines x; 672 is my preset y value
+	x2 = (672-bL)/leftSlope;
+	x3 = (672-bR)/rightSlope;
+	
+	//Altenate code if you know x value but not Y
+	//Subsititue hardcoded values or dynamic values for xVal1 & xVal2;
+	
+	/*
+	y2 = leftSlope*xVal1 +bL;
+	y3 = rightSlope*xVal2 +bR;
+	*/
+	}
+	//CURLY BRACE CLOSED
+	
+	
+	AD_Draw_Quad(surface,corner1x,x2,corner2x,x3,corner1y,672,corner2y,672,c_black);
+	
+}
