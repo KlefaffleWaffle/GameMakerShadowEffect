@@ -1,0 +1,36 @@
+(For the Draw Event of the oShadowBlock object)
+
+
+//Declaring a surface
+painting_surface = surface_create(window_get_width(), window_get_height());
+
+
+//sets the target
+surface_set_target(painting_surface);
+
+//(My custom draw function)
+//applies the shadow to the surface
+AD_draw_Shadow(painting_surface,Sun);
+
+//Reseting the targe
+surface_reset_target();
+
+//apply the surface to the game
+draw_surface(painting_surface, 0, 0);
+
+//go back to the surface
+surface_set_target(painting_surface);
+
+//Clear the surface so that doesn't constantly add every frame
+draw_clear_alpha(c_white,0);
+
+//Reseting the target
+surface_reset_target();
+
+//apply the surface to the game
+draw_surface(painting_surface, 0, 0)
+
+//Clear the memory to prevent memory leak.
+surface_free(painting_surface);
+
+//==================================Room END
